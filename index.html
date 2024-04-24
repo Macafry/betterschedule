@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tutoring Schedule</title>
+    <link href="//www.suu.edu/_files/framework/css/suu-custom.css?v=2023.12.18" rel="stylesheet">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
     <div id="selects">
@@ -117,7 +119,7 @@
                 res = list()
 
                 for text_shift in text_shifts.split('\n'):
-                    if '~' in text_shift or len(text_shift) == 0:
+                    if '~' in text_shift or len(text_shift) == 0 or text_shift.lower() == "closed":
                         continue
                     else:
                         begin_h, begin_m, end_h, end_m = parse_hours(text_shift)
@@ -250,7 +252,7 @@
                 schedule = coverage_schedule(df_tcs, shifts, subject, course, name)
 
                 if schedule is not None:
-                    display(schedule)
+                    display(schedule) 
         </script>
     </div>
     <script type="py" id="main">
